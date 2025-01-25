@@ -132,18 +132,33 @@ export default function Calculator() {
       animate={{ scale: 1, opacity: 1 }}
       className="bg-slate-800 rounded-3xl shadow-2xl p-8 w-96"
     >
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-white text-lg font-medium">Calculator</h1>
-        <button
-          onClick={toggleEmotion}
-          className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-            showEmotion 
-              ? 'bg-emerald-500 hover:bg-emerald-600 text-white' 
-              : 'bg-slate-700 hover:bg-slate-600 text-slate-300'
-          }`}
-        >
-          Emotion {showEmotion ? 'ON' : 'OFF'}
-        </button>
+      <div className="flex flex-col gap-4 mb-6">
+        <div className="flex items-center justify-between">
+          <h1 className="text-white text-xl font-bold tracking-tight">
+            <span className="bg-gradient-to-r from-emerald-400 to-blue-500 text-transparent bg-clip-text">
+              EMOTION
+            </span>
+            <span className="text-white">CALC</span>
+          </h1>
+          <div className="flex items-center gap-2">
+            <span className={`text-sm ${showEmotion ? 'text-emerald-400' : 'text-slate-400'}`}>
+              {showEmotion ? '😊' : '🤖'}
+            </span>
+            <button
+              onClick={toggleEmotion}
+              className={`
+                px-3 py-1 rounded-lg text-xs font-medium transition-all
+                border-2 
+                ${showEmotion 
+                  ? 'border-emerald-500 text-emerald-400 hover:bg-emerald-500/10' 
+                  : 'border-slate-600 text-slate-400 hover:bg-slate-700'
+                }
+              `}
+            >
+              {showEmotion ? 'EMOTIONAL' : 'NORMAL'}
+            </button>
+          </div>
+        </div>
       </div>
 
       <div className="mb-6 bg-slate-900 rounded-2xl p-6">
@@ -153,10 +168,10 @@ export default function Calculator() {
               key={emotionState.emoji}
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="mb-2 text-center"
+              className="mb-3 text-center"
             >
-              <span className="text-4xl mb-1 block">{emotionState.emoji}</span>
-              <span className={`text-sm ${emotionState.color}`}>
+              <span className="text-5xl mb-2 block">{emotionState.emoji}</span>
+              <span className={`text-sm font-medium ${emotionState.color}`}>
                 {emotionState.description}
               </span>
             </motion.div>
@@ -178,19 +193,19 @@ export default function Calculator() {
           <>
             <button
               onClick={() => handleOperator('🔄')}
-              className="bg-slate-700 hover:bg-slate-600 text-white rounded-2xl h-16 text-lg transition-colors"
+              className="bg-indigo-500 hover:bg-indigo-600 text-white rounded-2xl h-16 text-lg transition-colors"
             >
               🔄
             </button>
             <button
               onClick={() => handleOperator('❤️')}
-              className="bg-slate-700 hover:bg-slate-600 text-white rounded-2xl h-16 text-lg transition-colors"
+              className="bg-pink-500 hover:bg-pink-600 text-white rounded-2xl h-16 text-lg transition-colors"
             >
               ❤️
             </button>
             <button
               onClick={() => handleOperator('💔')}
-              className="bg-slate-700 hover:bg-slate-600 text-white rounded-2xl h-16 text-lg transition-colors"
+              className="bg-purple-500 hover:bg-purple-600 text-white rounded-2xl h-16 text-lg transition-colors"
             >
               💔
             </button>
